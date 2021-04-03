@@ -1,13 +1,15 @@
-# Rick and Morty Project
+# Rick and Morty Project :cookie:
 <img src="https://i.imgur.com/hzSRrZD.jpg"/>
 
 
 A fun app detailing the characters and episodes from the popular show Rick and Morty using the Rick and Morty API.
 
-Tech stack:
-Bootstrap
-React Hooks (useState and UseEffect)
-React Router
+### :crystal_ball: Tech stack: 
+<ul>
+<li>Bootstrap</li>
+<li>React Hooks (useState and UseEffect)</li>
+<li>React Router</li>
+</ul>
 
 # Getting Started with Create React App
 
