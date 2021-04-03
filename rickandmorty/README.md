@@ -1,3 +1,14 @@
+# Rick and Morty Project
+<img src="https://i.imgur.com/hzSRrZD.jpg"/>
+
+
+A fun app detailing the characters and episodes from the popular show Rick and Morty using the Rick and Morty API.
+
+Tech stack:
+Bootstrap
+React Hooks (useState and UseEffect)
+React Router
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -11,60 +22,31 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### Day 1: fetching data from the api and constructing a characters page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I created a functional `Characters` component and initialised useState. The excerpt below will show that within this component I used an async operation to fetch the data from the `character` endpoint from the api. Once the promise was met, I reformated the response into json to then use the data.
 
-### `npm run build`
+```
+  async function fetchData() {
+    const charsEndpoint = 'https://rickandmortyapi.com/api/character'
+    const res = await fetch(charsEndpoint)
+    const data = await res.json()
+    const [...item] = data.results 
+    setCharacter(item)
+    }
+```
+I wanted to incorporate `useEffect` and practise state management in this project. `useEffect` is a hook for encapsulating code that has 'side effects'. It's like a combination of componentDidMount, componentDidUpdate, and componentWillUnmount and updates the DOM with after effects accordingly. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I passed in an invoked `fetchData()` and an empty array as a second parameter to avoid endless remounting (a quirk with React's useEffect).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+NB: Previously, functional components didn't have access to the component life cycle, but with useEffect you can tap into it.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+ useEffect(() => {
+    fetchData()
+   }, []);
+```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Day 2: Establish some routing via navbar to make is easier to navigate across each page so I can flesh out individual characters pages and eposodes pages
+Day 3: Incorporate searches and filters
