@@ -1,66 +1,76 @@
-import './Characters.css';
 import React, { useState, useEffect } from "react";
-// import Button from 'react-bootstrap/Button';
-import { Button, Card, Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Button, Card, Form, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const Characters = () => {
-  // const [hasError, setErrors] = useState(false);
   const [character, setCharacter] = useState({});
 
+    async function fetchData() {
+        await fetch('https://rickandmortyapi.com/api/character')
+              .then((res) => (res.ok) ? Promise.resolve(res) : Promise.reject(new Error(res.statusText)))  // check the response of our APIs
+              .then(res => res.json())    // parse it to Json
+              .catch(error => console.log('There was a problem!', error))
+  
+      .then(data => {
+        // assign to requested URL as defined in array with array index.
+        const char = data;
+        //set state
+        setCharacter(char)
+          })
+          
+        }
+    
+       useEffect(() => {
+        fetchData()
+       }, []);
 
-  async function fetchData() {
-    const charsEndpoint = 'https://rickandmortyapi.com/api/character'
-    const res = await fetch(charsEndpoint)
-    const data = await res.json()
-    const [...item] = data.results 
-    console.log(item)
-    setCharacter(item)
-    }
+       console.log('character', character)
 
-   useEffect(() => {
-    fetchData()
-   }, []);
-
-  //  {console.log(character)}
-
-   const list = []
-   for (let i in character) {
-    list.push(<Card key={character[i].id} style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={character[i].image} />
+         const charactersList = []
+   for (let i in character.results) {
+    charactersList.push(<Card key={character.results[i].id} style={{ width: '18rem' }}>
+    <Card.Img variant="top" src={character.results[i].image} />
     <Card.Body>
-      <Card.Title>{character[i].name}</Card.Title>
+      <Card.Title>{character.results[i].name}</Card.Title>
       {/* <Card.Text> */}
         <ul>
-        <li>{`Status: ${character[i].status}`}</li>
-        <li>{`Species: ${character[i].species}`}</li>
-        <li>{`Location: ${character[i].location.name}`}</li>
+        {/* <li>{`Name: ${character.results[i].name}`}</li> */}
+        <li>{`Species: ${character.results[i].species}`}</li>
+        <li>{`Status: ${character.results[i].status}`}</li>
+
+        <li>{`Location: ${character.results[i].location.name}`}</li>
+        <li>{`Origin: ${character.results[i].origin.name}`}</li>
         </ul>
       {/* </Card.Text> */}
-      <Button variant="primary">Go somewhere</Button>
+      <Button variant="primary">Check out the cameos</Button>
     </Card.Body>
   </Card>)
     
   }
-   
-  return (
-    <div className="Characters"> 
-    <Jumbotron className="jum">
-  <h1>Characters</h1>
-  <p>
-    This is a simple hero unit, a simple jumbotron-style component for calling
-    extra attention to featured content or information.
-  </p>
-  <p>
-    <Button variant="primary">Learn more</Button>
-  </p>
-</Jumbotron>
+    //    {console.log('character', character.results)}
 
-        {list}
+    
+return(
+  <>
+  <Jumbotron id="jumbotron">
+     {/* <img src='https://i.imgur.com/4cOhKc2.jpg' id="intro-home"></img> */}
    
+    <p className="p-background">
+    <Link to={'/'}> <Button id="btn">Home</Button></Link>
+    <Form inline>
+      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+      <Button variant="outline-light">Search</Button>
+    </Form>
+    </p>
+  </Jumbotron>
+    <div className='container'>
+    
+ 
+    {charactersList}
     </div>
-  );
- }
-
+    </>
+) 
+}
 
 export default Characters;

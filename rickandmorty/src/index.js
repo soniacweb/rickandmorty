@@ -1,20 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import Nav from './Nav';
+import Home from './Home';
 import Characters from './Characters';
-import Nav from './Nav'
-import reportWebVitals from './reportWebVitals';
+import Episodes from './Episodes';
+import Locations from './Locations';
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Nav />
-    <Characters />
-  </React.StrictMode>,
+  <Router>
+<Navbar bg="primary" variant="dark">
+    <Navbar.Brand href="/">rick+morty</Navbar.Brand>
+    {/* <Nav className="mr-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/characters">Characters</Nav.Link>
+      <Nav.Link href="/episodes">Episodes</Nav.Link>
+      <Nav.Link href="/locations">Locations</Nav.Link>
+
+    </Nav> */}
+   
+  </Navbar>
+
+ <Switch>
+<Route path='/characters' component={Characters}/>
+<Route path='/episodes' component={Episodes}/>
+<Route exact path='/locations' exact component={Locations}/>
+<Route exact path='/' exact component={Home}/>
+
+</Switch>
+  </Router>,
+
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

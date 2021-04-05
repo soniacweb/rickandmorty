@@ -1,39 +1,29 @@
-import { Navbar, Container, Row, Col} from 'react-bootstrap';
+
+// import React from "react";
+// import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 
-const Nav = () => {
+// const Nav = () => {
+//     return (
+//       <>
+//     <Navbar bg="primary" variant="dark">
+//     <Navbar.Brand href="/home">Navbar</Navbar.Brand>
+//     <Nav className="mr-auto">
+//       <Nav.Link href="/home">Home</Nav.Link>
+//       <Nav.Link href="/characters">Characters</Nav.Link>
+//       <Nav.Link href="/episodes">Episodes</Nav.Link>
+//     </Nav>
+//     <Form inline>
+//       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+//       <Button variant="outline-light">Search</Button>
+//     </Form>
+//   </Navbar>
+//   </>
+//     )
+// }
+
+// export default Nav;
 
 
 
-    return (
-<>
-<Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">
-      <img
-        alt=""
-        src="/logo.svg"
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-      />{' '}
-      React Bootstrap
-    </Navbar.Brand>
-  </Navbar>
-
-
-  <Container>
-  <Row>
-    <Col sm={8}>sm=8</Col>
-    <Col sm={4}>sm=4</Col>
-  </Row>
-  <Row>
-    <Col sm>sm=true</Col>
-    <Col sm>sm=true</Col>
-    <Col sm>sm=true</Col>
-  </Row>
-</Container>
-</>
-    )  
-}
-
-export default Nav;
+  

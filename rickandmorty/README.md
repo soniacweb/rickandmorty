@@ -25,9 +25,9 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-### Day 1: fetching data from the api and constructing a characters page
+### :dart: Day 1: fetching data from the api and constructing a characters page
 
-I created a functional `Characters` component and initialised useState. The excerpt below will show that within this component I used an async operation to fetch the data from the `character` endpoint from the api. Once the promise was met, I reformated the response into json to then use the data.
+I created a functional `Characters` component and initialised `useState`. The excerpt below will show that within this component I used an async operation to fetch the data from the `character` endpoint from the api. Once the promise was met, I reformated the response into a JavaScript object to then use the data.
 
 ```
   async function fetchData() {
