@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Characters = () => {
   const [character, setCharacter] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredChar, setFilteredChar] = useState([]);
 
     async function fetchData() {
         await fetch('https://rickandmortyapi.com/api/character')
@@ -25,9 +27,31 @@ const Characters = () => {
         fetchData()
        }, []);
 
-       console.log('character', character)
 
-         const charactersList = []
+       const handleSearchChanges = (e) => {
+        console.log(e.target.value)
+        setSearchTerm(e.target.value);
+      }
+      
+      //most examples filter thorugh an array, but i need to filter through an object
+      useEffect(() => {
+        const arr = [];
+          for (let names in character.results) {
+            arr.push(character.results[names].name)
+            console.log('arr', arr)
+          }
+        setFilteredChar(
+          arr.filter(x=> x.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        )
+       }, [searchTerm])
+  
+       
+      // console.log('object.values', Object.values(character)[1])
+
+    // console.log('character', character.results)
+
+    const charactersList = []
    for (let i in character.results) {
     charactersList.push(<Card key={character.results[i].id} style={{ width: '18rem' }}>
     <Card.Img variant="top" src={character.results[i].image} />
@@ -47,20 +71,25 @@ const Characters = () => {
     </Card.Body>
   </Card>)
     
-  }
-    //    {console.log('character', character.results)}
+        //    {console.log('character', character.results)}
+   }
 
-    
+ 
+
 return(
   <>
-  <Jumbotron id="jumbotron">
+  <Jumbotron className="jumbotron jumbotron-fluid">
      {/* <img src='https://i.imgur.com/4cOhKc2.jpg' id="intro-home"></img> */}
-   
-    <p className="p-background">
+      <p className="search-component">
     <Link to={'/'}> <Button id="btn">Home</Button></Link>
     <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-light">Search</Button>
+      <FormControl 
+      type="text" 
+      placeholder="Search" 
+      className="search mr-sm-2" 
+      value={searchTerm}
+      onChange={handleSearchChanges} />
+      <Button variant="outline-light" type="submit">Search</Button>
     </Form>
     </p>
   </Jumbotron>
@@ -70,7 +99,7 @@ return(
     {charactersList}
     </div>
     </>
-) 
+  ) 
 }
 
 export default Characters;

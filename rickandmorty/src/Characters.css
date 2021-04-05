@@ -31,3 +31,7 @@
   transform: scale(1.5); 
 } */
 
+.search-component {
+  display: flex;
+  justify-content: center;
+}

@@ -7,7 +7,7 @@ import { Link} from 'react-router-dom';
 
 const Home = () => {
 return(
-    <Jumbotron id="jumbotron">
+    <Jumbotron className="jumbotron jumbotron-fluid" id="jumbotron">
      <img src='https://i.imgur.com/4cOhKc2.jpg' id="intro-home"></img>
    
     <p className="p-background">
