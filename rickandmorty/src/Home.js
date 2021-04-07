@@ -8,7 +8,7 @@ import { Link} from 'react-router-dom';
 const Home = () => {
 return(
     <Jumbotron className="jumbotron jumbotron-fluid" id="jumbotron">
-     <img src='https://i.imgur.com/4cOhKc2.jpg' id="intro-home"></img>
+     <img src='https://i.imgur.com/4cOhKc2.jpg' id="intro-home" alt='hero'></img>
    
     <p className="p-background">
     <Link to={'/characters'}> <Button id="btn">Characters</Button></Link>

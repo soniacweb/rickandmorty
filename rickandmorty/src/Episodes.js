@@ -1,6 +1,8 @@
- import React, { useState, useEffect } from "react";
- import { Button, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Button, Card } from 'react-bootstrap';
 import './Episodes.css'
+import { Link } from 'react-router-dom';
+
 
 const Episodes = () => {
     const [episode, setEpisode] = useState({});
@@ -39,7 +41,8 @@ const Episodes = () => {
         <li>{`Airdate: ${episode.results[i].air_date}`}</li>
         </ul>
       {/* </Card.Text> */}
-      <Button variant="primary">Check out the cameos</Button>
+      <Button variant="primary"> <Link key={episode.results[i].id} to={`/episodes/${episode.results[i].id}`}>Check out the cameos </Link></Button>
+
     </Card.Body>
   </Card>)
     

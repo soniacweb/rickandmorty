@@ -6,7 +6,8 @@ import Home from './Home';
 import Characters from './Characters';
 import Episodes from './Episodes';
 import Locations from './Locations';
-
+import SingleChar from './SingleChar';
+import SingleEpisodes from './SingleEpisodes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
@@ -28,7 +29,9 @@ ReactDOM.render(
   </Navbar>
 
  <Switch>
+<Route path="/characters/:id" component={SingleChar} />
 <Route path='/characters' component={Characters}/>
+<Route path="/episodes/:id" component={SingleEpisodes} />
 <Route path='/episodes' component={Episodes}/>
 <Route exact path='/locations' exact component={Locations}/>
 <Route exact path='/' exact component={Home}/>

@@ -3,11 +3,19 @@
 }
 
 
-.Characters {
+/* .Characters {
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-evenly;
 
+} */
+
+#jumbotron1 {
+  margin-bottom: none;
+    /* padding-right: 0;
+    padding-left: 0;
+    border-radius: 0; */
+    padding: 4rem 2rem;
 }
 
 .jum {
@@ -34,4 +42,34 @@
 .search-component {
   display: flex;
   justify-content: center;
+}
+
+.container-fluid {
+  width: 100%;
+  background-image: url('https://i.imgur.com/mRB3HHW.png');
+  background-size: 950px 490px;
+  /* background-position: center center; */
+  background-repeat: repeat;
+  text-align:center;
+  margin:auto;
+  padding:0;
+
+}
+
+.innercontainer {
+margin: 0 auto;
+display: flex;
+width: 90%;
+flex-wrap: wrap; 
+justify-content: space-evenly;
+}
+
+.card {
+  margin: 40px auto;
+}
+
+.rmimg {
+  margin: 0 auto;
+  
+
 }

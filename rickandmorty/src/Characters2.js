@@ -2,6 +2,7 @@ import './Characters.css';
 import React, { useState, useEffect } from "react";
 import { Button, Card, Jumbotron } from 'react-bootstrap';
 
+// this is a dud component i may use later on..
 
 const Characters = () => {
   

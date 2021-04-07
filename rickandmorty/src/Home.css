@@ -25,7 +25,7 @@ margin-bottom: 0px;
     display: flex;
     justify-content: center; 
     background-color: transparent;
-    bottom: 10px;
+    bottom: 50px;
     left: 40%;
 }
 #btn {
@@ -38,3 +38,25 @@ border-radius: 45%;
 font-family: 'Creepster', cursive;
 font-size: 25px;
 }
+
+@media (min-width: 768px) { 
+
+  /* body {
+    padding-bottom: 40px;
+} */
+  #intro-home {
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%; 
+  }
+
+  .p-background {
+    position: absolute;
+    display: flex;
+    justify-content: center; 
+    background-color: transparent;
+    bottom: 100px;
+    left: 40%;
+}
+ }
+
